@@ -14,7 +14,7 @@ const ProductsList = () => {
             code: 1
         }
     ])
-    const [findElement, setFindElement] = useState("")
+    // const [findElement, setFindElement] = useState("")
     useEffect(() => {
         getAllproducts()
     }, []);
@@ -28,9 +28,9 @@ const ProductsList = () => {
     }
 
     const onchangeFind = (e) => {
-        const r = productArray.find(item => item.description == (e.target.value).toLowerCase().trim() || item.code == (e.target.value).toLowerCase().trim())
-        if (r !== undefined) {
-            setProductsArray([r]);
+        const resultProduct = productArray.find(item => item.description == (e.target.value).toLowerCase().trim() || item.code == (e.target.value).toLowerCase().trim())
+        if (resultProduct !== undefined) {
+            setProductsArray([resultProduct]);
         }
     }
 
@@ -68,7 +68,8 @@ const ProductsList = () => {
                                 whileTap={{ scale: 0.9 }}
                             >
                                 <div class="card-body btn-sm text-center">
-                                    {item.description}-{item.code}
+                                    <span>description: </span>{item.description} <br />
+                                    <span>code: </span> {item.code}
                                 </div>
                             </motion.div>
                         ))}
